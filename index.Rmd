@@ -92,5 +92,18 @@ leaflet(locs) %>%
   addMarkers(~ Longitude, ~ Latitude, popup = ~ Location, icon = markerIcon)
   
 ```
-  
+
+```{r}
+# Make a list of icons. We'll index into it based on name.
+markerIcon <- iconList(
+  rat = makeIcon("salmon.png", 30, 30)
+)
+locs <- locations %>% mutate(Longitude = abs(Longitude) * -1)
+
+leaflet(locs) %>% 
+  addTiles() %>% 
+  addMarkers(~ Longitude, ~ Latitude, popup = ~ Location, icon = markerIcon)
+
+```
+
   
